@@ -26,6 +26,8 @@ public class CharacterMovement : MonoBehaviour
         m_input.actions["Move"].started += this.OnMove;
         m_input.actions["Move"].performed += this.OnMove;
         m_input.actions["Move"].canceled += this.OnMove;
+
+        m_input.actions["Fire"].started += this.OnFire;
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
