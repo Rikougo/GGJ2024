@@ -4545,7 +4545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_initialHandPos: {x: 0, y: 0, z: 1.25}
   m_downHandPos: {x: 0, y: -0.7, z: 1.25}
-  m_animationTime: 1
+  m_animationTime: 0.1
 --- !u!1 &2034868434
 GameObject:
   m_ObjectHideFlags: 0
