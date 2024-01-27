@@ -15,6 +15,7 @@ public enum GameState
 public enum StoryState
 {
     INTRO,
+    FIRST_BOSS,
     SEARCH_KEY,
     HAS_KEY,
     BOSS_FIGHT
@@ -25,6 +26,7 @@ public class GameController : MonoBehaviour
     public static readonly StoryState[] StoryStates = new StoryState[]
     {
         StoryState.INTRO,
+        StoryState.FIRST_BOSS,
         StoryState.SEARCH_KEY,
         StoryState.HAS_KEY,
         StoryState.BOSS_FIGHT
@@ -56,7 +58,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        this.StartDialog();
+        this.StartIntroDialog();
     }
     
     public void SwitchGameState(GameState p_target)
@@ -66,14 +68,25 @@ public class GameController : MonoBehaviour
         this.GameStateChanged?.Invoke(m_currentState, l_old);
     }
 
-    public void UpdateStory()
+    private void UpdateStory()
     {
         m_currentStoryIndex++;
         m_currentStoryState = GameController.StoryStates[m_currentStoryIndex];
         this.StoryStateUpdated?.Invoke(m_currentStoryState);
     }
 
-    public void StartDialog()
+    private void StartIntroDialog()
+    {
+        this.StartDialog(m_introDialog, this.OnIntroDialogEnd); 
+    }
+
+    private void OnIntroDialogEnd()
+    {
+        this.UpdateStory();
+        // TODO Start music
+    }
+
+    public void StartDialog(DialogContainer p_dialog, Action p_endCallback)
     {
         this.SwitchGameState(GameState.DIALOG);
         m_handController.ShowHands(false);
