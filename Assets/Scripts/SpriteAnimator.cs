@@ -9,6 +9,7 @@ namespace BloodTribute.Utils
         [SerializeField] private Sprite[] m_spriteSheet;
         [SerializeField] private float m_framePerSecond = 30.0f;
         [SerializeField] private bool m_loop = false;
+        [SerializeField] private bool m_hideOnStop = false;
 
         private int m_currentIndex;
 
@@ -16,6 +17,7 @@ namespace BloodTribute.Utils
         private SpriteRenderer m_sprite;
 
         private bool m_playing;
+        
 
         public event Action AnimationEnded;
 
@@ -46,6 +48,11 @@ namespace BloodTribute.Utils
         public void Stop()
         {
             m_playing = false;
+
+            if (m_hideOnStop)
+            {
+                this.Hide();
+            }
         }
 
         public void Hide()

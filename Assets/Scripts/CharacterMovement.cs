@@ -1,14 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.ProBuilder;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using Math = UnityEngine.ProBuilder.Math;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class CharacterMovement : MonoBehaviour
 {
-    [Header("Assets")] 
-    [SerializeField] private AudioClip m_laserClip;
-
     [Header("Scene references")] 
     [SerializeField] private GameController m_gameController;
     [SerializeField] private HandController m_handController;
@@ -24,7 +23,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float m_cameraSensitivity = 90.0f;
     [SerializeField] private float m_xCameraDeadZone = 5.0f;
     [SerializeField] private float m_yCameraDeadZone = 5.0f;
-    [SerializeField] private int m_health = 0;
+    [SerializeField] private int m_health = 2;
 
     private CharacterController m_controller;
     private PlayerInput m_input;
@@ -145,5 +144,18 @@ public class CharacterMovement : MonoBehaviour
         m_laserActivationTime = Time.time;
         m_laserRenderer.enabled = true;
         m_laserRenderer.SetPosition(1, m_laserRenderer.transform.InverseTransformPoint(p_hitPoint));
+    }
+
+    public void Hit()
+    {
+        m_health--;
+
+        if (m_health < 0)
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+        
+        m_handController.SetCurrentHealth(m_health);
+        Debug.Log($"[{DateTime.Now.ToLongTimeString()}] Got hit");
     }
 }
