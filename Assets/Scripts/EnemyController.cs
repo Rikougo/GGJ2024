@@ -60,6 +60,7 @@ public class EnemyController : MonoBehaviour
     {
         m_gameController = FindAnyObjectByType<GameController>();
         m_player = GameObject.FindGameObjectWithTag("Player").transform;
+        m_currentState = EnemyState.IDLE;
     }
 
     private void Update()
@@ -172,7 +173,6 @@ public class EnemyController : MonoBehaviour
 
         if (m_hasLock)
         {
-            Debug.Log($"[{DateTime.Now.ToLongTimeString()}] Fire");
             m_explosionAnimator.Play();
             m_fireSource.Play();
             if (Physics.Raycast(this.transform.position,

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1644101972204960121}
   - component: {fileID: 6565763530658750015}
   - component: {fileID: 8241205741456251830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,9 +120,9 @@ GameObject:
   - component: {fileID: 8586218708912068358}
   - component: {fileID: 2082263757313787145}
   - component: {fileID: 7729572851880473479}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,7 +345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4119329355603122704}
   - component: {fileID: 6883202437293036145}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: VirtualFPSCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

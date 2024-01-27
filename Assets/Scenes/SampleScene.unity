@@ -2277,10 +2277,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 6510855020716638443, guid: 75e8b7c9a46001b47a307f0c761777ff, type: 3}
-      propertyPath: m_player
-      value: 
-      objectReference: {fileID: 1874806602}
     - target: {fileID: 6997469411982452833, guid: 75e8b7c9a46001b47a307f0c761777ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.19
@@ -3649,10 +3645,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 6510855020716638443, guid: 75e8b7c9a46001b47a307f0c761777ff, type: 3}
-      propertyPath: m_player
-      value: 
-      objectReference: {fileID: 1874806602}
     - target: {fileID: 6997469411982452833, guid: 75e8b7c9a46001b47a307f0c761777ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.6
@@ -3710,10 +3702,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 6510855020716638443, guid: 75e8b7c9a46001b47a307f0c761777ff, type: 3}
-      propertyPath: m_player
-      value: 
-      objectReference: {fileID: 1874806602}
     - target: {fileID: 6997469411982452833, guid: 75e8b7c9a46001b47a307f0c761777ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.72
@@ -4148,11 +4136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1874806602 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3769449404069603041, guid: 8a58c11cc364aaa429ad4ad4f7d6653a, type: 3}
-  m_PrefabInstance: {fileID: 3478179525006212463}
-  m_PrefabAsset: {fileID: 0}
 --- !u!120 &1933286711 stripped
 LineRenderer:
   m_CorrespondingSourceObject: {fileID: 7002453086045702871, guid: ba5bf0f42fec89c458988176239145da, type: 3}
@@ -4385,10 +4368,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6510855020716638443, guid: 75e8b7c9a46001b47a307f0c761777ff, type: 3}
-      propertyPath: m_player
-      value: 
-      objectReference: {fileID: 1874806602}
     - target: {fileID: 6997469411982452833, guid: 75e8b7c9a46001b47a307f0c761777ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.85
