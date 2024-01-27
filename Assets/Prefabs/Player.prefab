@@ -223,16 +223,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dcb4565b180d34ab596445af7a31a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_laserClip: {fileID: 8300000, guid: 1b066dfd149299647bfafb55fa113e48, type: 3}
-  m_camera: {fileID: 0}
-  m_laserRenderer: {fileID: 0}
+  m_gameController: {fileID: 0}
   m_handController: {fileID: 0}
+  m_laserRenderer: {fileID: 0}
+  m_camera: {fileID: 0}
+  m_povController: {fileID: 4119329355603122704}
   m_fireMask:
     serializedVersion: 2
     m_Bits: 73
   m_laserTime: 0.2
   m_laserCooldown: 0.25
   m_speed: 10
+  m_cameraSensitivity: 0.4
+  m_xCameraDeadZone: 0.1
+  m_yCameraDeadZone: 0.4
   m_health: 0
 --- !u!82 &7729572851880473479
 AudioSource:

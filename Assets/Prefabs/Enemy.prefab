@@ -147,7 +147,7 @@ MonoBehaviour:
     m_Bits: 9
   m_targetDistanceArea: 2
   m_targetDistance: 10
-  m_lockTargetTime: 1
+  m_lockTargetTime: 2.5
   m_walkFramerate: 0.3
   m_explosionAnimator: {fileID: 198943787678790742}
   m_fireSource: {fileID: 6234461728649428520}
