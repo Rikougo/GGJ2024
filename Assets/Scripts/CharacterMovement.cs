@@ -1,13 +1,18 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class CharacterMovement : MonoBehaviour
 {
+    [Header("Assets")] 
+    [SerializeField] private AudioClip m_laserClip;
+    
+    [Header("Scene references")]
     [SerializeField] private Transform m_camera;
-    [SerializeField] private HandController m_handController;
     [SerializeField] private LineRenderer m_laserRenderer;
+    [SerializeField] private HandController m_handController;
+    
+    [Header("Configuration")]
     [SerializeField] private LayerMask m_fireMask;
     [SerializeField] private float m_laserTime = 0.2f;
     [SerializeField] private float m_laserCooldown = 0.25f;
@@ -15,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
 
     private CharacterController m_controller;
     private PlayerInput m_input;
+    private AudioSource m_audioSource;
 
     private Vector2 m_direction;
 
@@ -26,8 +32,9 @@ public class CharacterMovement : MonoBehaviour
     {
         m_controller = this.GetComponent<CharacterController>();
         m_input = this.GetComponent<PlayerInput>();
+        m_audioSource = this.GetComponent<AudioSource>();
 
-        m_laserCooldown = 0.0f;
+        m_laserTimer = 0.0f;
         m_laserActive = false;
         m_laserActivationTime = Time.time;
     }
@@ -77,8 +84,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (m_laserTimer <= 0.0f && m_input.actions["Fire"].WasPressedThisFrame())
         {
-            m_handController.ShowHands(false);
-            // this.Fire();
+            this.Fire();
         }
 
         if (m_laserTimer > 0.0f) m_laserTimer -= Time.deltaTime;
@@ -87,6 +93,8 @@ public class CharacterMovement : MonoBehaviour
     private void Fire()
     {
         m_laserTimer = m_laserCooldown;
+        m_handController.Fire();
+        this.PlaySound(m_laserClip);
         
         if (Physics.Raycast(m_camera.position, m_camera.forward, out RaycastHit l_hit, 50.0f, m_fireMask))
         {
@@ -105,5 +113,12 @@ public class CharacterMovement : MonoBehaviour
         m_laserActivationTime = Time.time;
         m_laserRenderer.enabled = true;
         m_laserRenderer.SetPosition(1, m_laserRenderer.transform.InverseTransformPoint(p_hitPoint));
+    }
+
+    private void PlaySound(AudioClip p_clip)
+    {
+        m_audioSource.loop = false;
+        m_audioSource.clip = p_clip;
+        m_audioSource.Play();
     }
 }
