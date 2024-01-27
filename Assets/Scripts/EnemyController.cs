@@ -59,7 +59,6 @@ public class EnemyController : MonoBehaviour
         {
             case EnemyState.IDLE:
                 bool l_checkPlayer = this.CheckPlayer();
-                Debug.Log(l_checkPlayer);
                 if (l_checkPlayer)
                 {
                     m_currentState = EnemyState.FOLLOW;

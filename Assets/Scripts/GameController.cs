@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private DialogContainer m_introDialog;
     [SerializeField] private PlayerInput m_input;
 
+    [SerializeField] private AudioSource m_musicPlayer;
     [SerializeField] private HandController m_handController;
     [SerializeField] private DialogController m_dialogController;
     
@@ -83,6 +84,7 @@ public class GameController : MonoBehaviour
     private void OnIntroDialogEnd()
     {
         this.UpdateStory();
+        m_musicPlayer.Play();
         // TODO Start music
     }
 
@@ -91,7 +93,7 @@ public class GameController : MonoBehaviour
         this.SwitchGameState(GameState.DIALOG);
         m_handController.ShowHands(false);
         m_input.actions["CameraMove"].Disable();
-        m_dialogController.QueueDialog(m_introDialog);
+        m_dialogController.QueueDialog(p_dialog);
         
         m_input.actions["Fire"].started += this.NextDialog;
         m_dialogController.StartDialog(() =>
@@ -100,6 +102,8 @@ public class GameController : MonoBehaviour
             m_input.actions["Fire"].started -= this.NextDialog;
             this.SwitchGameState(GameState.PLAYING);
             m_handController.ShowHands(true);
+            
+            p_endCallback?.Invoke();
         });
     }
 
