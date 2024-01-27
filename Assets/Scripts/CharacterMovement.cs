@@ -1,23 +1,29 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.ProBuilder;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class CharacterMovement : MonoBehaviour
 {
     [Header("Assets")] 
     [SerializeField] private AudioClip m_laserClip;
-    
-    [Header("Scene references")]
-    [SerializeField] private Transform m_camera;
-    [SerializeField] private LineRenderer m_laserRenderer;
+
+    [Header("Scene references")] 
+    [SerializeField] private GameController m_gameController;
     [SerializeField] private HandController m_handController;
+    [SerializeField] private LineRenderer m_laserRenderer;
+    [SerializeField] private Transform m_camera;
+    [SerializeField] private Transform m_povController;
     
     [Header("Configuration")]
     [SerializeField] private LayerMask m_fireMask;
     [SerializeField] private float m_laserTime = 0.2f;
     [SerializeField] private float m_laserCooldown = 0.25f;
     [SerializeField] private float m_speed = 5.0f;
+    [SerializeField] private float m_cameraSensitivity = 90.0f;
+    [SerializeField] private float m_xCameraDeadZone = 5.0f;
+    [SerializeField] private float m_yCameraDeadZone = 5.0f;
     [SerializeField] private int m_health = 0;
 
     private CharacterController m_controller;
@@ -25,6 +31,7 @@ public class CharacterMovement : MonoBehaviour
 
 
     private Vector2 m_direction;
+    private Vector2 m_xzCameraRotation;
 
     private float m_laserTimer;
     private bool m_laserActive;
@@ -79,6 +86,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (m_gameController.CurrentState != GameState.PLAYING) return;
+        
         Vector3 l_rawForward = new Vector3(m_camera.forward.x, 0.0f, m_camera.forward.z).normalized;
         Vector3 l_rawRight = new Vector3(m_camera.right.x, 0.0f, m_camera.right.z).normalized;
         Vector3 l_forward = l_rawForward * m_direction.y;
@@ -86,12 +95,12 @@ public class CharacterMovement : MonoBehaviour
         Vector3 l_direction = l_forward + l_right;
         Vector3 l_velocity = l_direction.normalized * m_speed;
         m_controller.Move(l_velocity * Time.fixedDeltaTime);
-
-        
     }
 
     private void Update()
     {
+        if (m_gameController.CurrentState != GameState.PLAYING) return;
+        
         if (m_laserActive && Time.time - m_laserActivationTime > m_laserTime)
         {
             m_laserRenderer.enabled = false;
@@ -104,6 +113,14 @@ public class CharacterMovement : MonoBehaviour
         }
 
         if (m_laserTimer > 0.0f) m_laserTimer -= Time.deltaTime;
+        
+        Vector3 l_mouseDelta = m_input.actions["CameraMove"].ReadValue<Vector2>();
+        Vector3 l_angleDelta = l_mouseDelta * m_cameraSensitivity;
+        l_angleDelta.x = Mathf.Abs(l_angleDelta.x) < m_xCameraDeadZone ? 0.0f : l_angleDelta.x;
+        l_angleDelta.y = Mathf.Abs(l_angleDelta.y) < m_yCameraDeadZone ? 0.0f : l_angleDelta.y;
+        m_xzCameraRotation += new Vector2(l_angleDelta.x, -l_angleDelta.y);
+        m_xzCameraRotation.y = Mathf.Clamp(m_xzCameraRotation.y, -60.0f, 90.0f);
+        m_povController.localEulerAngles = new Vector3(m_xzCameraRotation.y, m_xzCameraRotation.x, 0.0f);
     }
 
     private void Fire()

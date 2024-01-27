@@ -9,7 +9,7 @@ public class HandController : MonoBehaviour
     [SerializeField] private SpriteRenderer m_handGunRenderer;
     [SerializeField] private Sprite m_idleLaser;
     [SerializeField] private Sprite m_shootLaser;
-    [SerializeField] private AudioClip m_laserClip;
+    [SerializeField] private AudioClip[] m_laserClip;
 
     [SerializeField] private float m_shootTime = 0.15f;
 
@@ -34,6 +34,7 @@ public class HandController : MonoBehaviour
 
     private bool m_shooting;
     private float m_shootTimer;
+    private int m_currentLaserClip;
 
     private bool m_healing;
     private Sprite m_targetClapioSprite;
@@ -47,6 +48,7 @@ public class HandController : MonoBehaviour
         m_healTimer = 0.0f;
         m_targetClapioSprite = m_clapioStates[0];
 
+        m_currentLaserClip = 0;
         m_shooting = false;
         m_shootTimer = 0.0f;
         
@@ -94,10 +96,11 @@ public class HandController : MonoBehaviour
 
     public void Fire()
     {
-        this.PlaySound(m_laserClip);
+        this.PlaySound(m_laserClip[m_currentLaserClip]);
         m_shooting = true;
         m_shootTimer = m_shootTime;
         m_handGunRenderer.sprite = m_shootLaser;
+        m_currentLaserClip = (m_currentLaserClip + 1) % m_laserClip.Length;
     }
 
     public void SetCurrentHealth(int p_state)

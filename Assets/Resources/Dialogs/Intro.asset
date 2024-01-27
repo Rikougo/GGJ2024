@@ -15,19 +15,46 @@ MonoBehaviour:
   NodeLinks:
   - BaseNodeGUID: 217275bb-2343-4232-bccd-abdcd934a1ce
     PortName: Next
-    TargetNodeGUID: 558c71ad-3938-4cfb-8738-a06202bcb91a
-  - BaseNodeGUID: 558c71ad-3938-4cfb-8738-a06202bcb91a
-    PortName: New choice
-    TargetNodeGUID: b6ed883a-2de7-431f-a080-14bf27e004e7
+    TargetNodeGUID: cf943c31-edc7-4f05-a182-f0861338d2e9
+  - BaseNodeGUID: 7a1682bc-1ba2-4f35-be87-d611ea851d9a
+    PortName: 
+    TargetNodeGUID: 44eb7b3a-eecf-4d29-b37a-8c30bf6ed4b6
+  - BaseNodeGUID: 44eb7b3a-eecf-4d29-b37a-8c30bf6ed4b6
+    PortName: 
+    TargetNodeGUID: 8a203ee3-cfb6-4e48-983d-6380aa277584
+  - BaseNodeGUID: 6c0800ce-a40b-4b53-a7db-9a03e64f4312
+    PortName: 
+    TargetNodeGUID: 7a1682bc-1ba2-4f35-be87-d611ea851d9a
+  - BaseNodeGUID: cf943c31-edc7-4f05-a182-f0861338d2e9
+    PortName: 
+    TargetNodeGUID: 6c0800ce-a40b-4b53-a7db-9a03e64f4312
   DialogueNodeData:
-  - EntryPoint: 1
-    NodeGUID: 558c71ad-3938-4cfb-8738-a06202bcb91a
-    Position: {x: 222, y: 200}
-    DialogTitle: MainCharacter
-    DialogText: Je suis le meilleur, MICHEL FOREVER
   - EntryPoint: 0
-    NodeGUID: b6ed883a-2de7-431f-a080-14bf27e004e7
-    Position: {x: 598, y: 200}
-    DialogTitle: Title
-    DialogText: Dialogue Node
+    NodeGUID: 44eb7b3a-eecf-4d29-b37a-8c30bf6ed4b6
+    Position: {x: 1522, y: 200}
+    DialogTitle: MainCharacter
+    DialogText: Ok there is definitely something going on !
+  - EntryPoint: 0
+    NodeGUID: 6c0800ce-a40b-4b53-a7db-9a03e64f4312
+    Position: {x: 688, y: 205}
+    DialogTitle: Clapio
+    DialogText: "Nothing probably an event of the station. keep storing the broom
+      ! I want to get drunk ! \r"
+  - EntryPoint: 1
+    NodeGUID: cf943c31-edc7-4f05-a182-f0861338d2e9
+    Position: {x: 268, y: 205}
+    DialogTitle: MainCharacter
+    DialogText: What that sounds ?
+  - EntryPoint: 0
+    NodeGUID: 7a1682bc-1ba2-4f35-be87-d611ea851d9a
+    Position: {x: 1111, y: 200}
+    DialogTitle: MainCharacter
+    DialogText: You don't even have a mounth......
+  - EntryPoint: 0
+    NodeGUID: 8a203ee3-cfb6-4e48-983d-6380aa277584
+    Position: {x: 1995, y: 200}
+    DialogTitle: Clapio
+    DialogText: 'Ok right.... you better check it out
+
+'
   CommentBlockData: []
