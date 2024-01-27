@@ -54,6 +54,8 @@ public class CharacterMovement : MonoBehaviour
 
         m_input.actions["Heal"].started += this.OnHeal;
 
+        m_input.actions["Reload"].started += (p_ctx) => this.ReloadGame();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -152,10 +154,15 @@ public class CharacterMovement : MonoBehaviour
 
         if (m_health < 0)
         {
-            SceneManager.LoadScene("SampleScene");
+            this.ReloadGame();
+            return;
         }
         
         m_handController.SetCurrentHealth(m_health);
-        Debug.Log($"[{DateTime.Now.ToLongTimeString()}] Got hit");
+    }
+
+    private void ReloadGame()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }
