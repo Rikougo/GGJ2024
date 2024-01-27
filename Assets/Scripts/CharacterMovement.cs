@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class CharacterMovement : MonoBehaviour
@@ -17,10 +18,11 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float m_laserTime = 0.2f;
     [SerializeField] private float m_laserCooldown = 0.25f;
     [SerializeField] private float m_speed = 5.0f;
+    [SerializeField] private int m_health = 0;
 
     private CharacterController m_controller;
     private PlayerInput m_input;
-    private AudioSource m_audioSource;
+
 
     private Vector2 m_direction;
 
@@ -32,7 +34,6 @@ public class CharacterMovement : MonoBehaviour
     {
         m_controller = this.GetComponent<CharacterController>();
         m_input = this.GetComponent<PlayerInput>();
-        m_audioSource = this.GetComponent<AudioSource>();
 
         m_laserTimer = 0.0f;
         m_laserActive = false;
@@ -45,6 +46,8 @@ public class CharacterMovement : MonoBehaviour
         m_input.actions["Move"].performed += this.OnMove;
         m_input.actions["Move"].canceled += this.OnMove;
 
+        m_input.actions["Heal"].started += this.OnHeal;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -56,9 +59,22 @@ public class CharacterMovement : MonoBehaviour
         m_input.actions["Move"].canceled -= this.OnMove;
     }
 
+    private void Start()
+    {
+        m_handController.SetCurrentHealth(m_health);
+    }
+    
     private void OnMove(InputAction.CallbackContext p_context)
     {
         m_direction = p_context.canceled ? Vector2.zero : p_context.ReadValue<Vector2>();
+    }
+
+    private void OnHeal(InputAction.CallbackContext p_context)
+    {
+        if (m_handController.Busy) return;
+
+        m_health = Math.Clamp(m_health + 1, 0, 2);
+        m_handController.Heal(m_health - 1, m_health);
     }
 
     private void FixedUpdate()
@@ -82,7 +98,7 @@ public class CharacterMovement : MonoBehaviour
             m_laserActive = false;
         }
 
-        if (m_laserTimer <= 0.0f && m_input.actions["Fire"].WasPressedThisFrame())
+        if (!m_handController.Busy && m_laserTimer <= 0.0f && m_input.actions["Fire"].WasPressedThisFrame())
         {
             this.Fire();
         }
@@ -94,7 +110,6 @@ public class CharacterMovement : MonoBehaviour
     {
         m_laserTimer = m_laserCooldown;
         m_handController.Fire();
-        this.PlaySound(m_laserClip);
         
         if (Physics.Raycast(m_camera.position, m_camera.forward, out RaycastHit l_hit, 50.0f, m_fireMask))
         {
@@ -113,12 +128,5 @@ public class CharacterMovement : MonoBehaviour
         m_laserActivationTime = Time.time;
         m_laserRenderer.enabled = true;
         m_laserRenderer.SetPosition(1, m_laserRenderer.transform.InverseTransformPoint(p_hitPoint));
-    }
-
-    private void PlaySound(AudioClip p_clip)
-    {
-        m_audioSource.loop = false;
-        m_audioSource.clip = p_clip;
-        m_audioSource.Play();
     }
 }
