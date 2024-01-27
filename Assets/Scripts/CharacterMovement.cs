@@ -1,8 +1,8 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Math = UnityEngine.ProBuilder.Math;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private LineRenderer m_laserRenderer;
     [SerializeField] private Transform m_camera;
     [SerializeField] private Transform m_povController;
+    [SerializeField] private CinemachineVirtualCamera m_virtualCamera;
     
     [Header("Configuration")]
     [SerializeField] private LayerMask m_fireMask;
@@ -27,20 +28,23 @@ public class CharacterMovement : MonoBehaviour
 
     private CharacterController m_controller;
     private PlayerInput m_input;
-
-
+    
     private Vector2 m_direction;
     private Vector2 m_xzCameraRotation;
 
+    private int m_cleanStack;
     private float m_laserTimer;
     private bool m_laserActive;
     private float m_laserActivationTime;
+
+    public CinemachineVirtualCamera VirtualCamera => m_virtualCamera;
 
     private void Awake()
     {
         m_controller = this.GetComponent<CharacterController>();
         m_input = this.GetComponent<PlayerInput>();
 
+        m_cleanStack = 3;
         m_laserTimer = 0.0f;
         m_laserActive = false;
         m_laserActivationTime = Time.time;
@@ -79,7 +83,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnHeal(InputAction.CallbackContext p_context)
     {
-        if (m_handController.Busy) return;
+        if (m_handController.Busy || m_cleanStack > 0) return;
 
         m_health = Math.Clamp(m_health + 1, 0, 2);
         m_handController.Heal(m_health - 1, m_health);
@@ -126,6 +130,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void Fire()
     {
+        if (!m_handController.HasGun) return;
+        
         m_laserTimer = m_laserCooldown;
         m_handController.Fire();
         

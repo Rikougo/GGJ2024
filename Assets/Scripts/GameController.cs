@@ -33,8 +33,10 @@ public class GameController : MonoBehaviour
     };
 
     [SerializeField] private DialogContainer m_introDialog;
+    [SerializeField] private DialogContainer m_firstEncounterDialog;
     [SerializeField] private PlayerInput m_input;
 
+    [SerializeField] private CharacterMovement m_character;
     [SerializeField] private AudioSource m_musicPlayer;
     [SerializeField] private HandController m_handController;
     [SerializeField] private DialogController m_dialogController;
@@ -85,19 +87,31 @@ public class GameController : MonoBehaviour
     {
         this.UpdateStory();
         m_musicPlayer.Play();
-        // TODO Start music
+    }
+
+    public void OnFirstEncounterDialog(Transform p_target)
+    {
+        this.StartDialog(m_firstEncounterDialog, this.OnFirstEncounterDialogEnd);
+    }
+    
+    private void OnFirstEncounterDialogEnd()
+    {
+        this.UpdateStory();
+        m_handController.GiveGun();
     }
 
     public void StartDialog(DialogContainer p_dialog, Action p_endCallback)
     {
         this.SwitchGameState(GameState.DIALOG);
+        this.LowerMusic();
         m_handController.ShowHands(false);
         m_input.actions["CameraMove"].Disable();
         m_dialogController.QueueDialog(p_dialog);
-        
         m_input.actions["Fire"].started += this.NextDialog;
+        
         m_dialogController.StartDialog(() =>
         {
+            this.UpperMusic();
             m_input.actions["CameraMove"].Enable();
             m_input.actions["Fire"].started -= this.NextDialog;
             this.SwitchGameState(GameState.PLAYING);
@@ -105,6 +119,16 @@ public class GameController : MonoBehaviour
             
             p_endCallback?.Invoke();
         });
+    }
+
+    private void LowerMusic()
+    {
+        m_musicPlayer.volume = 0.2f;
+    }
+    
+    private void UpperMusic()
+    {
+        m_musicPlayer.volume = 1.0f;
     }
 
     private void NextDialog(InputAction.CallbackContext p_ctx)

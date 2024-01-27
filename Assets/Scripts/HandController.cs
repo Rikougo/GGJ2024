@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HandController : MonoBehaviour
 {
-    
     [Header("Hand gun")] 
     [SerializeField] private SpriteRenderer m_handGunRenderer;
     [SerializeField] private Sprite m_idleLaser;
@@ -40,7 +39,10 @@ public class HandController : MonoBehaviour
     private Sprite m_targetClapioSprite;
     private float m_healTimer;
 
+    private bool m_hasGun;
+
     public bool Busy => m_healing || m_shooting;
+    public bool HasGun => m_hasGun;
 
     private void Awake()
     {
@@ -54,6 +56,9 @@ public class HandController : MonoBehaviour
         
         this.transform.localPosition = m_initialHandPos;
         m_targetPos = m_initialHandPos;
+
+        m_hasGun = false;
+        m_handGunRenderer.enabled = false;
         
         m_audioSource = this.GetComponent<AudioSource>();
     }
@@ -89,7 +94,7 @@ public class HandController : MonoBehaviour
         {
             m_healing = false;
             m_handClapioRenderer.sprite = m_targetClapioSprite;
-            m_handGunRenderer.enabled = true;
+            m_handGunRenderer.enabled = m_hasGun;
             m_handCleaningAnimator.Hide();
         }
     }
@@ -129,15 +134,18 @@ public class HandController : MonoBehaviour
             m_dropletAnimator.Play();
         };
         m_handCleaningAnimator.Play();
-        
-        
     }
 
     public void TakeDamage(int p_newState)
     {
         m_handClapioRenderer.sprite = m_clapioStates[p_newState];
     }
-    
+
+    public void GiveGun()
+    {
+        m_hasGun = true;
+        m_handGunRenderer.enabled = true;
+    }
     
     private void PlaySound(AudioClip p_clip)
     {
