@@ -1,0 +1,3 @@
+[submodule "Packages/com.elye.cheapDialogSytem"]
+	path = Packages/com.elye.cheapDialogSytem
+	url = https://github.com/Rikougo/CheapDialogSystem

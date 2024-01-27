@@ -1,11 +1,10 @@
 {
   "dependencies": {
     "com.elye.cheapdialogsystem": {
-      "version": "https://github.com/Rikougo/CheapDialogSystem.git",
+      "version": "file:com.elye.cheapDialogSytem",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "b4522ea0752f2287b2e0a478e9ccce445f8c7c12"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.2d.common": {
       "version": "9.0.2",

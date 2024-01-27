@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.elye.cheapdialogsystem": "https://github.com/Rikougo/CheapDialogSystem.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.spriteshape": "10.0.2",
     "com.unity.cinemachine": "2.9.7",

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f670cfbc9b964b4b993fdda4a9a851e6, type: 3}
+  m_Name: Intro
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 217275bb-2343-4232-bccd-abdcd934a1ce
+    PortName: Next
+    TargetNodeGUID: 558c71ad-3938-4cfb-8738-a06202bcb91a
+  - BaseNodeGUID: 558c71ad-3938-4cfb-8738-a06202bcb91a
+    PortName: New choice
+    TargetNodeGUID: b6ed883a-2de7-431f-a080-14bf27e004e7
+  DialogueNodeData:
+  - EntryPoint: 1
+    NodeGUID: 558c71ad-3938-4cfb-8738-a06202bcb91a
+    Position: {x: 222, y: 200}
+    DialogTitle: MainCharacter
+    DialogText: Je suis le meilleur, MICHEL FOREVER
+  - EntryPoint: 0
+    NodeGUID: b6ed883a-2de7-431f-a080-14bf27e004e7
+    Position: {x: 598, y: 200}
+    DialogTitle: Title
+    DialogText: Dialogue Node
+  CommentBlockData: []
