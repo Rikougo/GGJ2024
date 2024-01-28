@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f670cfbc9b964b4b993fdda4a9a851e6, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: b2d2d5db-464b-4527-8dc5-b3a6dda99576
+    PortName: Next
+    TargetNodeGUID: 2070f6db-6a53-4f91-8560-ac4cde0459a6
+  DialogueNodeData:
+  - EntryPoint: 1
+    NodeGUID: 2070f6db-6a53-4f91-8560-ac4cde0459a6
+    Position: {x: 247, y: 200}
+    DialogTitle: MainCharacter
+    DialogText: Aaaa
+    Sound: {fileID: 8300000, guid: d6e679c165ed2804f8cd01d40559ee67, type: 3}
+  CommentBlockData: []

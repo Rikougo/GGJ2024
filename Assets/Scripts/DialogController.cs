@@ -20,6 +20,7 @@ public class DialogController : MonoBehaviour
     [SerializeField] private GameObject m_layout;
     [SerializeField] private Image m_avatarDisplay;
     [SerializeField] private TMP_Text m_dialogText;
+    [SerializeField] private AudioSource m_audioPlayer;
 
     private DialogContainer m_currentDialog;
     private DialogNodeData m_currentNode;
@@ -55,6 +56,9 @@ public class DialogController : MonoBehaviour
 
     private void UpdateDialog()
     {
+        m_audioPlayer.Stop();
+        m_audioPlayer.clip = m_currentNode.Sound;
+        m_audioPlayer.Play();
         m_avatarDisplay.sprite =
             m_avatarEntries.First(p_entry => p_entry.name.Equals(m_currentNode.DialogTitle)).avatar;
         m_dialogText.text = m_currentNode.DialogText;

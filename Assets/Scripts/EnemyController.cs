@@ -159,7 +159,7 @@ public class EnemyController : MonoBehaviour
     private void InitLock()
     {
         m_hasLock = false;
-        m_lockTargetTimer = m_lockTargetTime + Random.Range(0.2f, 1.0f);
+        m_lockTargetTimer = m_lockTargetTime + Random.Range(0f, 0.2f);
         m_lockDirection = (m_player.position - this.transform.position).normalized;
     }
     

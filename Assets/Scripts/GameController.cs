@@ -120,18 +120,20 @@ public class GameController : MonoBehaviour
         this.LowerMusic();
         m_handController.ShowHands(false);
         m_input.actions["CameraMove"].Disable();
+        m_input.actions["Fire"].Disable();
         m_dialogController.QueueDialog(p_dialog);
-        m_input.actions["Fire"].started += this.NextDialog;
+        m_input.actions["ClickNext"].started += this.NextDialog;
         
         m_dialogController.StartDialog(() =>
         {
             this.UpperMusic();
             m_input.actions["CameraMove"].Enable();
-            m_input.actions["Fire"].started -= this.NextDialog;
-            this.SwitchGameState(GameState.PLAYING);
+            m_input.actions["Fire"].Enable();
+            m_input.actions["ClickNext"].started -= this.NextDialog;
             m_handController.ShowHands(true);
             
             p_endCallback?.Invoke();
+            this.SwitchGameState(GameState.PLAYING);
         });
     }
 

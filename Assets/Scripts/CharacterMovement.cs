@@ -25,6 +25,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float m_xCameraDeadZone = 5.0f;
     [SerializeField] private float m_yCameraDeadZone = 5.0f;
     [SerializeField] private int m_health = 2;
+    [SerializeField] private float m_invincibleTime = 0.15f;
 
     private CharacterController m_controller;
     private PlayerInput m_input;
@@ -36,6 +37,9 @@ public class CharacterMovement : MonoBehaviour
     private float m_laserTimer;
     private bool m_laserActive;
     private float m_laserActivationTime;
+
+    private bool m_gotHit;
+    private float m_invincibleTimer;
 
     public event Action<int> OnStackChanged;
 
@@ -50,6 +54,7 @@ public class CharacterMovement : MonoBehaviour
         m_laserTimer = 0.0f;
         m_laserActive = false;
         m_laserActivationTime = Time.time;
+        m_gotHit = false;
     }
 
     private void OnEnable()
@@ -128,6 +133,14 @@ public class CharacterMovement : MonoBehaviour
             this.Fire();
         }
 
+        if (m_gotHit)
+        {
+            m_invincibleTimer -= Time.deltaTime;
+            if (m_invincibleTimer <= 0.0f)
+            {
+                m_gotHit = false;
+            }
+        }
         if (m_laserTimer > 0.0f) m_laserTimer -= Time.deltaTime;
         
         Vector3 l_mouseDelta = m_input.actions["CameraMove"].ReadValue<Vector2>();
@@ -151,6 +164,9 @@ public class CharacterMovement : MonoBehaviour
             if (l_hit.transform.TryGetComponent(out EnemyController l_enemy))
             {
                 l_enemy.Hit();
+            } else if (l_hit.transform.TryGetComponent(out BossController l_boss))
+            {
+                l_boss.Hit();
             }
 
             this.ShowLaser(l_hit.point);
@@ -167,7 +183,12 @@ public class CharacterMovement : MonoBehaviour
 
     public void Hit()
     {
+        if (m_gotHit) return;
+        
         m_health--;
+
+        m_gotHit = true;
+        m_invincibleTimer = m_invincibleTime;
 
         if (m_health < 0)
         {

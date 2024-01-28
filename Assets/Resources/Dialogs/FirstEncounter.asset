@@ -19,66 +19,74 @@ MonoBehaviour:
   - BaseNodeGUID: 013d4d9a-564a-4023-ac11-aa7c8d313f68
     PortName: New choice
     TargetNodeGUID: cb901c33-be9b-4ec0-9db2-2cd3f49c0ec6
-  - BaseNodeGUID: cb901c33-be9b-4ec0-9db2-2cd3f49c0ec6
-    PortName: New choice
-    TargetNodeGUID: 9e613a12-4efc-41a3-8295-093fdf8fffbe
   - BaseNodeGUID: 9e613a12-4efc-41a3-8295-093fdf8fffbe
     PortName: New choice
     TargetNodeGUID: 1446dff4-47ee-4972-b62d-076efe61e7fb
-  - BaseNodeGUID: 1446dff4-47ee-4972-b62d-076efe61e7fb
-    PortName: New choice
-    TargetNodeGUID: c35346ed-91d3-488c-87e9-07fd8a6c5451
   - BaseNodeGUID: c08b86ba-de78-4858-ae33-788cf6886587
     PortName: New choice
     TargetNodeGUID: 013d4d9a-564a-4023-ac11-aa7c8d313f68
-  - BaseNodeGUID: c35346ed-91d3-488c-87e9-07fd8a6c5451
-    PortName: New choice
-    TargetNodeGUID: b17db4bb-0d83-4802-9f78-87dd917cfc5a
   - BaseNodeGUID: b17db4bb-0d83-4802-9f78-87dd917cfc5a
     PortName: New choice
     TargetNodeGUID: b686ea64-6b8c-41c4-b791-4cf518c5c310
+  - BaseNodeGUID: cb901c33-be9b-4ec0-9db2-2cd3f49c0ec6
+    PortName: New choice
+    TargetNodeGUID: 9e613a12-4efc-41a3-8295-093fdf8fffbe
+  - BaseNodeGUID: 1446dff4-47ee-4972-b62d-076efe61e7fb
+    PortName: New choice
+    TargetNodeGUID: c35346ed-91d3-488c-87e9-07fd8a6c5451
+  - BaseNodeGUID: c35346ed-91d3-488c-87e9-07fd8a6c5451
+    PortName: New choice
+    TargetNodeGUID: b17db4bb-0d83-4802-9f78-87dd917cfc5a
   DialogueNodeData:
   - EntryPoint: 0
     NodeGUID: 013d4d9a-564a-4023-ac11-aa7c8d313f68
     Position: {x: 671, y: 200}
     DialogTitle: Clapio
     DialogText: And he Stole the booze!!! We need to make him pay  !!
-  - EntryPoint: 0
-    NodeGUID: cb901c33-be9b-4ec0-9db2-2cd3f49c0ec6
-    Position: {x: 1037, y: 200}
-    DialogTitle: Enemy
-    DialogText: But....
+    Sound: {fileID: 8300000, guid: 0caf1bd4c3ba55c43806a4ff8fdfa876, type: 3}
   - EntryPoint: 0
     NodeGUID: 9e613a12-4efc-41a3-8295-093fdf8fffbe
     Position: {x: 1410, y: 200}
     DialogTitle: Clapio
-    DialogText: RIGHT. NOW.
-  - EntryPoint: 0
-    NodeGUID: 1446dff4-47ee-4972-b62d-076efe61e7fb
-    Position: {x: 1844, y: 200}
-    DialogTitle: MainCharacter
-    DialogText: But im just a janitor.... I don't know how to defend myself against
-      space pirate
+    DialogText: RIGHT NOW !!!
+    Sound: {fileID: 8300000, guid: 0caf1bd4c3ba55c43806a4ff8fdfa876, type: 3}
   - EntryPoint: 1
     NodeGUID: c08b86ba-de78-4858-ae33-788cf6886587
     Position: {x: 259, y: 200}
     DialogTitle: MainCharacter
     DialogText: Wait he killed the barman !!!!
-  - EntryPoint: 0
-    NodeGUID: c35346ed-91d3-488c-87e9-07fd8a6c5451
-    Position: {x: 2309, y: 260}
-    DialogTitle: Clapio
-    DialogText: "Lucky for you that I was a general during the great war of epsilon
-      7 then.... \r\n"
+    Sound: {fileID: 8300000, guid: d52974a24696d5a46ae948bf0c3d2bad, type: 3}
   - EntryPoint: 0
     NodeGUID: b17db4bb-0d83-4802-9f78-87dd917cfc5a
     Position: {x: 2716, y: 260}
     DialogTitle: Clapio
     DialogText: You'll see, killing someone its nearly the same as sweeping the floor.
+    Sound: {fileID: 0}
   - EntryPoint: 0
     NodeGUID: b686ea64-6b8c-41c4-b791-4cf518c5c310
     Position: {x: 3112, y: 260}
     DialogTitle: Clapio
     DialogText: "You just have to find a good carpet to sweep under the proof.\r\nHere
       I got an voltaic \"roul\xE9 a la fraise\" \r\n"
+    Sound: {fileID: 0}
+  - EntryPoint: 0
+    NodeGUID: cb901c33-be9b-4ec0-9db2-2cd3f49c0ec6
+    Position: {x: 1007, y: 200}
+    DialogTitle: MainCharacter
+    DialogText: But....
+    Sound: {fileID: 0}
+  - EntryPoint: 0
+    NodeGUID: 1446dff4-47ee-4972-b62d-076efe61e7fb
+    Position: {x: 1803, y: 200}
+    DialogTitle: MainCharacter
+    DialogText: But im just a janitor.... I don't know how to defend myself against
+      space pirate
+    Sound: {fileID: 8300000, guid: bf84aecf9d7f46e4d9033a6e52efad93, type: 3}
+  - EntryPoint: 0
+    NodeGUID: c35346ed-91d3-488c-87e9-07fd8a6c5451
+    Position: {x: 2250, y: 224}
+    DialogTitle: Clapio
+    DialogText: "Lucky for you that I was a general during the great war of epsilon
+      7 then.... \r\n"
+    Sound: {fileID: 8300000, guid: c76aaf6ce8048e94a82386e261e0d436, type: 3}
   CommentBlockData: []

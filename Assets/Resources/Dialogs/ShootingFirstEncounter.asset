@@ -13,67 +13,75 @@ MonoBehaviour:
   m_Name: ShootingFirstEncounter
   m_EditorClassIdentifier: 
   NodeLinks:
-  - BaseNodeGUID: 2ae21fe6-0657-429e-b487-9823a50c9f4d
-    PortName: New choice
-    TargetNodeGUID: 9ae112dc-3c3d-44af-8b06-6f5a9246e83d
-  - BaseNodeGUID: 9ae112dc-3c3d-44af-8b06-6f5a9246e83d
-    PortName: New choice
-    TargetNodeGUID: ff791764-cd23-4a88-9bce-13d551df5f7f
-  - BaseNodeGUID: ff791764-cd23-4a88-9bce-13d551df5f7f
-    PortName: New choice
-    TargetNodeGUID: 9fe2db92-91f7-4e96-bb8c-c8efe7996ea1
   - BaseNodeGUID: 9fe2db92-91f7-4e96-bb8c-c8efe7996ea1
     PortName: New choice
     TargetNodeGUID: 8d44280c-8f42-4816-b8a1-3fe60f387276
-  - BaseNodeGUID: 8d44280c-8f42-4816-b8a1-3fe60f387276
-    PortName: New choice
-    TargetNodeGUID: 86b1b1d4-5734-4327-ab5b-4ddd47705192
   - BaseNodeGUID: 86b1b1d4-5734-4327-ab5b-4ddd47705192
     PortName: New choice
     TargetNodeGUID: fd5a404e-d7c8-45d9-b521-448b6037bead
   - BaseNodeGUID: fd5a404e-d7c8-45d9-b521-448b6037bead
     PortName: New choice
     TargetNodeGUID: 298c9cfe-07c2-4f0c-ae7f-e3a295710dfd
+  - BaseNodeGUID: 8d44280c-8f42-4816-b8a1-3fe60f387276
+    PortName: New choice
+    TargetNodeGUID: 86b1b1d4-5734-4327-ab5b-4ddd47705192
+  - BaseNodeGUID: 2ae21fe6-0657-429e-b487-9823a50c9f4d
+    PortName: New choice
+    TargetNodeGUID: ff791764-cd23-4a88-9bce-13d551df5f7f
+  - BaseNodeGUID: 9ae112dc-3c3d-44af-8b06-6f5a9246e83d
+    PortName: New choice
+    TargetNodeGUID: 9fe2db92-91f7-4e96-bb8c-c8efe7996ea1
+  - BaseNodeGUID: ff791764-cd23-4a88-9bce-13d551df5f7f
+    PortName: New choice
+    TargetNodeGUID: 9ae112dc-3c3d-44af-8b06-6f5a9246e83d
   DialogueNodeData:
-  - EntryPoint: 0
-    NodeGUID: 9fe2db92-91f7-4e96-bb8c-c8efe7996ea1
-    Position: {x: 1439, y: 185}
-    DialogTitle: MainCharacter
-    DialogText: Well... it was fun and game but i need to go to the bathroom...
   - EntryPoint: 0
     NodeGUID: 86b1b1d4-5734-4327-ab5b-4ddd47705192
     Position: {x: 2309, y: 185}
     DialogTitle: Enemy
     DialogText: HOW DARE YOU IM THE GREAT WILY THE MIGHTY DESTROYER NUMBER ONE OF
       THE CAPTAIN'S FLEET
+    Sound: {fileID: 8300000, guid: 7dde556aa3d1a704595496c053c73654, type: 3}
   - EntryPoint: 0
     NodeGUID: fd5a404e-d7c8-45d9-b521-448b6037bead
     Position: {x: 2758, y: 196}
     DialogTitle: Clapio
     DialogText: Why is he yelling?
+    Sound: {fileID: 8300000, guid: c76aaf6ce8048e94a82386e261e0d436, type: 3}
   - EntryPoint: 0
     NodeGUID: 298c9cfe-07c2-4f0c-ae7f-e3a295710dfd
     Position: {x: 3156, y: 196}
     DialogTitle: Enemy
     DialogText: "PREPARE TO MEET YOURE MAKER ! \r"
-  - EntryPoint: 1
-    NodeGUID: 2ae21fe6-0657-429e-b487-9823a50c9f4d
-    Position: {x: 245, y: 304}
-    DialogTitle: MainCharacter
-    DialogText: ...
-  - EntryPoint: 0
-    NodeGUID: 9ae112dc-3c3d-44af-8b06-6f5a9246e83d
-    Position: {x: 662, y: 218}
-    DialogTitle: Enemy
-    DialogText: ...
-  - EntryPoint: 0
-    NodeGUID: ff791764-cd23-4a88-9bce-13d551df5f7f
-    Position: {x: 1045, y: 232}
-    DialogTitle: Clapio
-    DialogText: ...
+    Sound: {fileID: 8300000, guid: 7dde556aa3d1a704595496c053c73654, type: 3}
   - EntryPoint: 0
     NodeGUID: 8d44280c-8f42-4816-b8a1-3fe60f387276
     Position: {x: 1914, y: 198}
     DialogTitle: Enemy
     DialogText: Wait a minute... WAIT A MINUTE ! YOU TRY TO SHOOT ME !
+    Sound: {fileID: 8300000, guid: 814480aeaaa40574caf615ab1739b08e, type: 3}
+  - EntryPoint: 1
+    NodeGUID: 2ae21fe6-0657-429e-b487-9823a50c9f4d
+    Position: {x: 237, y: 186}
+    DialogTitle: MainCharacter
+    DialogText: ...
+    Sound: {fileID: 0}
+  - EntryPoint: 0
+    NodeGUID: ff791764-cd23-4a88-9bce-13d551df5f7f
+    Position: {x: 632, y: 200}
+    DialogTitle: Clapio
+    DialogText: ...
+    Sound: {fileID: 0}
+  - EntryPoint: 0
+    NodeGUID: 9ae112dc-3c3d-44af-8b06-6f5a9246e83d
+    Position: {x: 1005, y: 208}
+    DialogTitle: Enemy
+    DialogText: ...
+    Sound: {fileID: 0}
+  - EntryPoint: 0
+    NodeGUID: 9fe2db92-91f7-4e96-bb8c-c8efe7996ea1
+    Position: {x: 1427, y: 208}
+    DialogTitle: MainCharacter
+    DialogText: Well... it was fun and game but i need to go to the bathroom...
+    Sound: {fileID: 8300000, guid: 2a27f3c68fb0ea6488eaedf4222acc91, type: 3}
   CommentBlockData: []
