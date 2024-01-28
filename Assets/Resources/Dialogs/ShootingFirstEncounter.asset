@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f670cfbc9b964b4b993fdda4a9a851e6, type: 3}
+  m_Name: ShootingFirstEncounter
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 2ae21fe6-0657-429e-b487-9823a50c9f4d
+    PortName: New choice
+    TargetNodeGUID: 9ae112dc-3c3d-44af-8b06-6f5a9246e83d
+  - BaseNodeGUID: 9ae112dc-3c3d-44af-8b06-6f5a9246e83d
+    PortName: New choice
+    TargetNodeGUID: ff791764-cd23-4a88-9bce-13d551df5f7f
+  - BaseNodeGUID: ff791764-cd23-4a88-9bce-13d551df5f7f
+    PortName: New choice
+    TargetNodeGUID: 9fe2db92-91f7-4e96-bb8c-c8efe7996ea1
+  - BaseNodeGUID: 9fe2db92-91f7-4e96-bb8c-c8efe7996ea1
+    PortName: New choice
+    TargetNodeGUID: 8d44280c-8f42-4816-b8a1-3fe60f387276
+  - BaseNodeGUID: 8d44280c-8f42-4816-b8a1-3fe60f387276
+    PortName: New choice
+    TargetNodeGUID: 86b1b1d4-5734-4327-ab5b-4ddd47705192
+  - BaseNodeGUID: 86b1b1d4-5734-4327-ab5b-4ddd47705192
+    PortName: New choice
+    TargetNodeGUID: fd5a404e-d7c8-45d9-b521-448b6037bead
+  - BaseNodeGUID: fd5a404e-d7c8-45d9-b521-448b6037bead
+    PortName: New choice
+    TargetNodeGUID: 298c9cfe-07c2-4f0c-ae7f-e3a295710dfd
+  DialogueNodeData:
+  - EntryPoint: 0
+    NodeGUID: 9fe2db92-91f7-4e96-bb8c-c8efe7996ea1
+    Position: {x: 1439, y: 185}
+    DialogTitle: MainCharacter
+    DialogText: Well... it was fun and game but i need to go to the bathroom...
+  - EntryPoint: 0
+    NodeGUID: 86b1b1d4-5734-4327-ab5b-4ddd47705192
+    Position: {x: 2309, y: 185}
+    DialogTitle: Enemy
+    DialogText: HOW DARE YOU IM THE GREAT WILY THE MIGHTY DESTROYER NUMBER ONE OF
+      THE CAPTAIN'S FLEET
+  - EntryPoint: 0
+    NodeGUID: fd5a404e-d7c8-45d9-b521-448b6037bead
+    Position: {x: 2758, y: 196}
+    DialogTitle: Clapio
+    DialogText: Why is he yelling?
+  - EntryPoint: 0
+    NodeGUID: 298c9cfe-07c2-4f0c-ae7f-e3a295710dfd
+    Position: {x: 3156, y: 196}
+    DialogTitle: Enemy
+    DialogText: "PREPARE TO MEET YOURE MAKER ! \r"
+  - EntryPoint: 1
+    NodeGUID: 2ae21fe6-0657-429e-b487-9823a50c9f4d
+    Position: {x: 245, y: 304}
+    DialogTitle: MainCharacter
+    DialogText: ...
+  - EntryPoint: 0
+    NodeGUID: 9ae112dc-3c3d-44af-8b06-6f5a9246e83d
+    Position: {x: 662, y: 218}
+    DialogTitle: Enemy
+    DialogText: ...
+  - EntryPoint: 0
+    NodeGUID: ff791764-cd23-4a88-9bce-13d551df5f7f
+    Position: {x: 1045, y: 232}
+    DialogTitle: Clapio
+    DialogText: ...
+  - EntryPoint: 0
+    NodeGUID: 8d44280c-8f42-4816-b8a1-3fe60f387276
+    Position: {x: 1914, y: 198}
+    DialogTitle: Enemy
+    DialogText: Wait a minute... WAIT A MINUTE ! YOU TRY TO SHOOT ME !
+  CommentBlockData: []

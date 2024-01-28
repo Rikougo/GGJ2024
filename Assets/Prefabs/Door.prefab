@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2afa31e40b9fc54c883bae0aea9143e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_targetPosition: {x: 0, y: -3.2, z: 0}
+  m_targetPosition: {x: 0, y: -6, z: 0}
   m_animationTime: 0.5
 --- !u!65 &7886136460061846211
 BoxCollider:

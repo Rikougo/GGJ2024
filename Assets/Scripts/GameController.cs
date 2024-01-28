@@ -16,6 +16,7 @@ public enum StoryState
 {
     INTRO,
     FIRST_BOSS,
+    SHOOT_FIRST_BOSS,
     SEARCH_KEY,
     HAS_KEY,
     BOSS_FIGHT
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
     {
         StoryState.INTRO,
         StoryState.FIRST_BOSS,
+        StoryState.SHOOT_FIRST_BOSS,
         StoryState.SEARCH_KEY,
         StoryState.HAS_KEY,
         StoryState.BOSS_FIGHT
@@ -34,6 +36,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private DialogContainer m_introDialog;
     [SerializeField] private DialogContainer m_firstEncounterDialog;
+    [SerializeField] private DialogContainer m_shotFirstEncounterDialog;
     [SerializeField] private PlayerInput m_input;
 
     [SerializeField] private CharacterMovement m_character;
@@ -98,6 +101,17 @@ public class GameController : MonoBehaviour
     {
         this.UpdateStory();
         m_handController.GiveGun();
+    }
+
+    public void OnShotFirstEncounterDialog()
+    {
+        if (m_currentStoryState != StoryState.SHOOT_FIRST_BOSS) return;
+        this.StartDialog(m_shotFirstEncounterDialog, this.OnShotFirstEncounterDialogEnd);
+    }
+    
+    private void OnShotFirstEncounterDialogEnd()
+    {
+        this.UpdateStory();
     }
 
     public void StartDialog(DialogContainer p_dialog, Action p_endCallback)

@@ -37,6 +37,8 @@ public class CharacterMovement : MonoBehaviour
     private bool m_laserActive;
     private float m_laserActivationTime;
 
+    public event Action<int> OnStackChanged;
+
     public CinemachineVirtualCamera VirtualCamera => m_virtualCamera;
 
     private void Awake()
@@ -74,6 +76,7 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         m_handController.SetCurrentHealth(m_health);
+        this.OnStackChanged?.Invoke(m_cleanStack);
     }
     
     private void OnMove(InputAction.CallbackContext p_context)
@@ -83,10 +86,18 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnHeal(InputAction.CallbackContext p_context)
     {
-        if (m_handController.Busy || m_cleanStack > 0) return;
+        if (m_gameController.CurrentState != GameState.PLAYING || m_handController.Busy || m_cleanStack <= 0) return;
 
+        m_cleanStack = Mathf.Max(m_cleanStack - 1, 0);
+        this.OnStackChanged?.Invoke(m_cleanStack);
         m_health = Math.Clamp(m_health + 1, 0, 2);
         m_handController.Heal(m_health - 1, m_health);
+    }
+
+    public void GainStack(int p_amount)
+    {
+        m_cleanStack += p_amount;
+        this.OnStackChanged?.Invoke(m_cleanStack);
     }
 
     private void FixedUpdate()
@@ -135,7 +146,7 @@ public class CharacterMovement : MonoBehaviour
         m_laserTimer = m_laserCooldown;
         m_handController.Fire();
         
-        if (Physics.Raycast(m_camera.position, m_camera.forward, out RaycastHit l_hit, 50.0f, m_fireMask))
+        if (Physics.Raycast(m_camera.position, m_camera.forward, out RaycastHit l_hit, 50.0f, m_fireMask, QueryTriggerInteraction.Ignore))
         {
             if (l_hit.transform.TryGetComponent(out EnemyController l_enemy))
             {
@@ -169,6 +180,6 @@ public class CharacterMovement : MonoBehaviour
 
     private void ReloadGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level");
     }
 }

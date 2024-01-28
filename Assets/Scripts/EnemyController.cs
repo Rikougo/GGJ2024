@@ -3,6 +3,7 @@ using BloodTribute.Utils;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public enum EnemyState
@@ -48,6 +49,8 @@ public class EnemyController : MonoBehaviour
 
     private int m_currentWalkIndex;
     private float m_walkTimer;
+
+    public UnityEvent GotHit;
 
     private void Awake()
     {
@@ -192,6 +195,7 @@ public class EnemyController : MonoBehaviour
 
     public void Hit()
     {
+        this.GotHit?.Invoke();
         m_lives--;
 
         if (m_lives <= 0)
